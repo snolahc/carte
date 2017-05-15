@@ -1,1 +1,70 @@
-42
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map | 42.network</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/range_slider.css" media="all"/>
+    <script>
+	var gmaps_api_key = "AIzaSyADv0li6ozE6oZIk_4f86HZEae7yJsGb3M";
+	var eventbrite_api_key = "OBGGO723JKTC6SZDFKDC";
+	var map;
+	var myloc;
+    </script>
+    <script src="js/functions.js"></script>
+    <script src="js/range_slider.js"></script>
+    <script src="js/search.js"></script>
+  </head>
+  <body>
+    <script src="js/location.js"></script>
+    <div id="header">Events finder</div>
+    <div id="selector">
+      <table>
+        <tr>
+          <td>
+            <input type="text" id="loc_addr" value="Search Place" onKeyPress="onPress_ENTER()" onblur="if (this.value == '') {this.value = 'Search Place';}" onfocus="if (this.value == 'Search Place') {this.value = '';}" />
+	    <script>
+	      function onPress_ENTER()
+	      {
+	        var keyPressed = event.keyCode || event.which;
+	        if(keyPressed==13) {
+		    setLocation(document.getElementById('loc_addr').value);
+	            keyPressed=null;
+	        } else {
+	            return false;
+	        }
+	      }
+            </script>
+          </td><td>
+            <img src="img/location-button.png" width="20px" height="20px" cursor="pointer" onClick="setLocation(document.getElementById('loc_addr').value);" alt="Go to location"></img>
+          </td><td>
+            <img src="img/mylocation-button.png" width="20px" height="20px" cursor="pointer" onClick="getMyLocation();" alt="Get my location"></img>
+          </td><td>
+	    <input id="loc_range" type="range" value="15" max="50" min="0" step="1" oninput="rangeUpdate(this.value)" onchange="rangeUpdate(this.value)" />
+            <script>
+	      function rangeUpdate(val) {
+	        document.getElementById('lb_loc_range').innerHTML=val; 
+	      }
+	    </script>
+          </td><td>
+            <img src="img/range-icon.png" width="20px" height="17px" alt="Range"></img>&nbsp;<label id="lb_loc_range">15</label>km
+          </td><td>
+            &nbsp;|&nbsp;
+          </td><td>
+            <section class="range-slider">
+              <span class="rangeValues"></span>
+              <input id="date_1" value="0" min="-30" max="30" step="1" type="range">
+              <input id="date_2" value="0" min="-30" max="30" step="1" type="range">
+            </section>
+          </td><td>
+            <input type="button" id="search_btn" value="Search" onclick="search();" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="map"></div>
+    <script src="js/maps.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADv0li6ozE6oZIk_4f86HZEae7yJsGb3M&callback=initMap">
+    </script>
+  </body>
+</html>

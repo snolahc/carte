@@ -1,0 +1,27 @@
+body {
+ margin-top: 0px;
+ margin-right: 0px;
+ margin-bottom: 0px;
+ margin-left: 0px;
+}
+#header {
+ height: 50px;
+ width: 100%;
+ color: white;
+ background-color: black;
+}
+#selector {
+ height: 100px;
+ width: 100%;
+}
+#map {
+ width: 100%;
+ position: absolute;
+ top: 150px;
+ bottom: 0;
+}
+table, th, td {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
