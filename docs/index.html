@@ -145,7 +145,7 @@ function showPosition(position) {
 }
 
 function doSearch() {
-    document.getElementById('loading').style.display = 'inline';
+    document.getElementById('loading').style.visibility = 'visible';
     var loc_within = (document.getElementById("loc_range").value ? document.getElementById("loc_range").value : "42");
     var t1 = parseInt(document.getElementById("date_1").value);
     var t2 = parseInt(document.getElementById("date_2").value);
@@ -170,7 +170,7 @@ function initMap() {
   var uluru = {lat: -25.363, lng: 131.044};
   var loc = (myloc ? myloc : uluru);
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 11,
+    zoom: 10,
     center: loc
   });
   var marker = new google.maps.Marker({
@@ -220,7 +220,7 @@ if(typeof(Worker) !== "undefined") {
         addVenueOnMap(msg.data.id);
         break;
       case 'end_loading':
-        document.getElementById('loading').style.display = 'none';
+        document.getElementById('loading').style.visibility = 'hidden';
         break;
       default:
         console.log("ERROR !!!!!");
@@ -232,7 +232,6 @@ if(typeof(Worker) !== "undefined") {
 
 getMyLocation();
     </script>
-    <div id="header">Events finder</div>
     <div id="selector">
       <table>
         <tr>
@@ -274,8 +273,8 @@ getMyLocation();
           </td><td>
             <button class="button" type="submit" id="search_btn" onclick="doSearch();">GO</button>
           </td><td>
-            <div id="loading" style="display: none;"><img width="32px" height="32px" src="img/loading.gif" /></div>
-          </td>
+            <div id="loading" style="visibility:hidden;"><img src="img/loading.gif" width="32px" height="32px"/></div>
+          </td><td><img src="img/toto.png" width="480px" height="120px" > </td>
         </tr>
       </table>
     </div>
