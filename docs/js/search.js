@@ -35,11 +35,13 @@ function askEventbrite(req) {
     console.log(tmp);
     self.postMessage({type: 'event', id: item.id, item: tmp});
   });
+  self.postMessage({type: 'event', id: null, item: null});
 }
 
 function askEventbriteVenue(item) {
-  console.log("ADD VENUE");
-  console.log(item);
+  // console.log("ADD VENUE");
+  // console.log(item);
+  if (item.venue_id !== null) {
     vhttp = new XMLHttpRequest();
     vurl = "https://www.eventbriteapi.com/v3/venues/" + item.venue_id + "/?token=" + eventbrite_api_key;
     vhttp.open("get", vurl, false);
@@ -51,5 +53,8 @@ function askEventbriteVenue(item) {
       events: item.events,
     };
     self.postMessage({type: 'venue', id: item.venue_id, item: vtmp});
+  } else {
+      self.postMessage({type: 'end_loading'});
+  }
 //Add here HTTP call to find organizer ID for URL
 }
