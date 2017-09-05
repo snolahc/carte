@@ -16,7 +16,7 @@ function addVenueOnMap(id) {
         '<h1 id="firstHeading" class="firstHeading">'+venues["v" + id].name+'</h1>'+
         '<div id="bodyContent"><ul>';
   venues["v" + id].events.forEach(function (item, index) {
-    content += '<li><h3>' + events[item].name + '</h3>' + (events[item].description !== null ? events[item].description.slice(0, 128) : "") + '<br><a href="'+events[item].url+'" target="_blank">Link to the event</a></li>';
+    content += '<li><h3>' + events[item].start_date.keyword + ' - ' + events[item].name '</h3>' + (events[item].description !== null ? events[item].description.slice(0, 128) : "") + '<br><a href="'+events[item].url+'" target="_blank">Link to the event</a></li>';
   });
   content +='</li></ul></div></div>';
   var onMap = new google.maps.Marker({
