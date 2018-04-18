@@ -45,6 +45,7 @@ function askEventbriteVenue(item) {
   if (item.venue_id !== null) {
     vhttp = new XMLHttpRequest();
     vurl = "https://www.eventbriteapi.com/v3/venues/" + item.venue_id + "/?token=" + eventbrite_api_key;
+    console.log(vurl);
     vhttp.open("get", vurl, false);
     vhttp.send();
     var vresponse = JSON.parse(vhttp.responseText);
