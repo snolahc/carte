@@ -18,6 +18,7 @@ self.onmessage = function (msg) {
 function askEventbrite(req) {
   var xhttp = new XMLHttpRequest();
   var url = "https://www.eventbriteapi.com/v3/events/search/?token=" + eventbrite_api_key + "&location.latitude=" + req.lat + "&location.longitude=" + req.lng + "&location.within=" + req.loc_within + "km&start_date.range_start=" + req.date_start + "&start_date.range_end=" + req.date_end + "&q=";
+  console.log(url);
   xhttp.open("get", url, false);
   xhttp.send();
   var response = JSON.parse(xhttp.responseText);
